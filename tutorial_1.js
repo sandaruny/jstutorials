@@ -108,15 +108,9 @@ var myvar = "my value";
   var myvar = "local value";
 })();
 //14//////////////
-/**
- * Example 1
- */
 log(x === undefined); // true
 var x = 3;
 
-/**
- * Example 2
- */
 // will return a value of undefined
 var myvar = "my value";
  
@@ -125,17 +119,62 @@ var myvar = "my value";
   var myvar = "local value";
 })();
 //15///////////////
-/**
- * Example 1
- */
-log(x === undefined); // x is not defined
-var myvar = "my value";
- 
-(function() {
-  log(myvar); // undefined
-  var myvar = "local value";
-})();
+log(x === undefined); ReferenceError:  // x is not defined 
 //16////////////////
+log(x); // ReferenceError not defined
+let x = 3;
+///////////////////
+//Function hoisting
+//16///////////////
+/* Function declaration */
+foo(); // "bar"
+
+function foo() {
+  console.log("bar"); // hoisted top
+}
+baz(); // TypeError: baz is not a function
+var baz = function() {
+  console.log("bar2");
+};
+///////////////////
+// Constants
+//17///////////////
+const d; // Missing initializer in const declaration
+//18///////////////
+function f() {};
+const f = 5; // ERROR Identifier 'f' has already been declared
+//19///////////////
+function f() {
+  const g = 5;
+  var g; // Identifier 'g' has already been declared	
+}
+//20///////////////
+function f() {
+  var g = 5;
+  var g = 7; // no error
+}
+//21////////////////
+function f() {
+  let g = 5;
+  let g = 7; // ERROR: dentifier 'g' has already been declared
+}
+//22////////////////
+const MY_OBJECT = {"key": "value"};
+MY_OBJECT.key = "otherValue"; // no error
+////////////////////
+//##Data structures and types
+//Data type conversion
+//23////////////////
+//adequately equal
+var x = 1;
+log(x); // 1
+if (true) {
+	var x = 2;
+	log(x); // 2
+}
+log(x); // 2
+//24/////////////////
+
 
 
 
